@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -19,7 +20,8 @@ import javax.script.ScriptEngineManager;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener
 {
     private int openParenthesis = 0;
-
+    private ArrayList<String> history;
+    private String tempTXT = "";
     private boolean dotUsed = false;
 
     private boolean equalClicked = false;
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonNumber8;
     Button buttonNumber9;
 
+    Button buttonHistory;
     Button buttonClear;
     Button buttonParentheses;
     Button buttonPercent;
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         scriptEngine = new ScriptEngineManager().getEngineByName("rhino");
 
+        history = new ArrayList<String>();
         initializeViewVariables();
         setOnClickListeners();
         setOnTouchListener();
@@ -82,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber8 = (Button) findViewById(R.id.button_eight);
         buttonNumber9 = (Button) findViewById(R.id.button_nine);
 
+        buttonHistory = (Button) findViewById(R.id.button_history);
         buttonClear = (Button) findViewById(R.id.button_clear);
         buttonParentheses = (Button) findViewById(R.id.button_parentheses);
         buttonPercent = (Button) findViewById(R.id.button_percent);
@@ -107,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber8.setOnClickListener(this);
         buttonNumber9.setOnClickListener(this);
 
+        buttonHistory.setOnClickListener(this);
         buttonClear.setOnClickListener(this);
         buttonParentheses.setOnClickListener(this);
         buttonPercent.setOnClickListener(this);
@@ -131,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber8.setOnTouchListener(this);
         buttonNumber9.setOnTouchListener(this);
 
+        buttonHistory.setOnTouchListener(this);
         buttonClear.setOnTouchListener(this);
         buttonParentheses.setOnTouchListener(this);
         buttonPercent.setOnTouchListener(this);
@@ -147,68 +154,112 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId())
         {
             case R.id.button_zero:
+                backHistory();
                 if (addNumber("0")) equalClicked = false;
                 break;
             case R.id.button_one:
+                backHistory();
                 if (addNumber("1")) equalClicked = false;
                 break;
             case R.id.button_two:
+                backHistory();
                 if (addNumber("2")) equalClicked = false;
                 break;
             case R.id.button_three:
+                backHistory();
                 if (addNumber("3")) equalClicked = false;
                 break;
             case R.id.button_four:
+                backHistory();
                 if (addNumber("4")) equalClicked = false;
                 break;
             case R.id.button_five:
+                backHistory();
                 if (addNumber("5")) equalClicked = false;
                 break;
             case R.id.button_six:
+                backHistory();
                 if (addNumber("6")) equalClicked = false;
                 break;
             case R.id.button_seven:
+                backHistory();
                 if (addNumber("7")) equalClicked = false;
                 break;
             case R.id.button_eight:
+                backHistory();
                 if (addNumber("8")) equalClicked = false;
                 break;
             case R.id.button_nine:
+                backHistory();
                 if (addNumber("9")) equalClicked = false;
                 break;
             case R.id.button_addition:
+                backHistory();
                 if (addOperand("+")) equalClicked = false;
                 break;
             case R.id.button_subtraction:
+                backHistory();
                 if (addOperand("-")) equalClicked = false;
                 break;
             case R.id.button_multiplication:
+                backHistory();
                 if (addOperand("x")) equalClicked = false;
                 break;
             case R.id.button_division:
+                backHistory();
                 if (addOperand("\u00F7")) equalClicked = false;
                 break;
             case R.id.button_percent:
+                backHistory();
                 if (addOperand("%")) equalClicked = false;
                 break;
             case R.id.button_dot:
+                backHistory();
                 if (addDot()) equalClicked = false;
                 break;
             case R.id.button_parentheses:
+                backHistory();
                 if (addParenthesis()) equalClicked = false;
                 break;
             case R.id.button_clear:
+                backHistory();
                 textViewInputNumbers.setText("");
                 openParenthesis = 0;
                 dotUsed = false;
                 equalClicked = false;
                 break;
+            case R.id.button_history:
+                boolean back = true;
+                if(!history.isEmpty() && !buttonHistory.getText().equals("Back")){
+                    buttonHistory.setText("Back");
+                    tempTXT = textViewInputNumbers.getText().toString();
+                    textViewInputNumbers.setText("");
+                    String historyString = "";
+                    for(String s : history){
+                        historyString += s + "\n";
+                    }
+                    textViewInputNumbers.setText(historyString);
+                    back = false;
+                }
+                if(buttonHistory.getText().equals("Back") && back){
+                    backHistory();
+                }
+
+                break;
             case R.id.button_equal:
+                backHistory();
                 if (textViewInputNumbers.getText().toString() != null && !textViewInputNumbers.getText().toString().equals(""))
                     calculate(textViewInputNumbers.getText().toString());
                 break;
         }
 
+    }
+
+    private void backHistory(){
+        if(buttonHistory.getText().equals("Back")){
+            textViewInputNumbers.setText(tempTXT);
+            buttonHistory.setText("History");
+        }
     }
 
     @Override
@@ -418,6 +469,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (result.contains("."))
         {
             result = result.replaceAll("\\.?0*$", "");
+            history.add(result);
             textViewInputNumbers.setText(result);
         }
     }
