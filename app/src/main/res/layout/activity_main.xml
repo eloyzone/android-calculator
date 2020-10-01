@@ -30,7 +30,7 @@
                 <TextView
                     android:id="@+id/textView_input_numbers"
                     android:layout_width="match_parent"
-                    android:layout_height="341dp"
+                    android:layout_height="217dp"
                     android:layout_marginTop="25dp"
                     android:layout_marginRight="10dp"
                     android:gravity="end"
