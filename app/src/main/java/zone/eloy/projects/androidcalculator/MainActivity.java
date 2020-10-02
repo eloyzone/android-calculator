@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.button_exponent:
-                if (addOperand("\u00F7")) equalClicked = false;
+                if (addExponent()) equalClicked = false;
                 break;
 
             case R.id.button_percent:
