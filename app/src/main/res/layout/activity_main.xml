@@ -61,7 +61,7 @@
             android:textSize="30sp" />
 
         <Button
-            android:id="@+id/button_CancelPrevious Calculations"
+            android:id="@+id/button_CancelPreviousCalculations"
             android:layout_width="14dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="0.9dp"
