@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber9 = (Button) findViewById(R.id.button_nine);
 
         buttonHistory = (Button) findViewById(R.id.button_history); //Added by MFonggrasin
-        buttonCancel = (Button) findViewById(R.id.button_clear);
+        buttonCancel = (Button) findViewById(R.id.button_CancelPreviousCalculations);
 
         buttonClear = (Button) findViewById(R.id.button_clear);
         buttonParentheses = (Button) findViewById(R.id.button_parentheses);
@@ -174,6 +174,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(view.getId() != R.id.button_history){
             backHistory(); //Added by MFonggrasin
         }
+        if(view.getId() != R.id.button_CancelPreviousCalculations){
+            CancelPast(); //Added by MFonggrasin
+        }
+
         switch (view.getId())
         {
             case R.id.button_zero:
@@ -248,6 +252,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (addOperand("\u00F7")) equalClicked = false;
                 break;
 
+            case R.id.button_CancelPreviousCalculations:
+                boolean clear = true;
+                if(!buttonClear.getText().equals("Clear")){
+                    buttonClear.setText("clear");
+                    tempTXT = textViewInputNumbers.getText().toString();
+                    textViewInputNumbers.setText("");
+                    String clearString = "";
+                    for(String s : history){
+                        clearString += s + "\n";
+                    }
+                    textViewInputNumbers.setText(clearString);
+                    clear = false;
+                }
+                if(buttonClear.getText().equals("Clear") && clear){
+                    CancelPast();
+                }
+
             case R.id.button_clear:
                 textViewInputNumbers.setText("");
                 openParenthesis = 0;
@@ -282,6 +303,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
 
+    }
+
+    private void CancelPast(){
+        if(buttonClear.getText().equals("Clear")){
+            textViewInputNumbers.setText(tempTXT);
+            buttonClear.setText("Clear");
+        }
     }
 
     //Added by MFonggrasin
