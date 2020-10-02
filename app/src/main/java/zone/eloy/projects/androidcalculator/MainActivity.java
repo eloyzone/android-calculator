@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 {
     private int openParenthesis = 0;
     private ArrayList<String> history;
-    private ArrayList<String> cancel;
+    private ArrayList<String> clear;
     private String tempTXT = "";
     private boolean dotUsed = false;
 
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         scriptEngine = new ScriptEngineManager().getEngineByName("rhino");
-        cancel = new ArrayList<String>();
+        clear = new ArrayList<String>();
         history = new ArrayList<String>();
         initializeViewVariables();
         setOnClickListeners();
@@ -160,67 +160,67 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             case R.id.button_zero:
                 backHistory();
-
+                CancelPast();
                 if (addNumber("0")) equalClicked = false;
                 break;
             case R.id.button_one:
                 backHistory();
-
+                CancelPast();
                 if (addNumber("1")) equalClicked = false;
                 break;
             case R.id.button_two:
                 backHistory();
-
+                CancelPast();
                 if (addNumber("2")) equalClicked = false;
                 break;
             case R.id.button_three:
                 backHistory();
-
+                CancelPast();
                 if (addNumber("3")) equalClicked = false;
                 break;
             case R.id.button_four:
                 backHistory();
-
+                CancelPast();
                 if (addNumber("4")) equalClicked = false;
                 break;
             case R.id.button_five:
                 backHistory();
-
+                CancelPast();
                 if (addNumber("5")) equalClicked = false;
                 break;
             case R.id.button_six:
                 backHistory();
-
+                CancelPast();
                 if (addNumber("6")) equalClicked = false;
                 break;
             case R.id.button_seven:
                 backHistory();
-
+                CancelPast();
                 if (addNumber("7")) equalClicked = false;
                 break;
             case R.id.button_eight:
                 backHistory();
-
+                CancelPast();
                 if (addNumber("8")) equalClicked = false;
                 break;
             case R.id.button_nine:
                 backHistory();
-
+                CancelPast();
                 if (addNumber("9")) equalClicked = false;
                 break;
             case R.id.button_addition:
                 backHistory();
-
+                CancelPast();
                 if (addOperand("+")) equalClicked = false;
                 break;
             case R.id.button_subtraction:
                 backHistory();
-
+                CancelPast();
                 if (addOperand("-")) equalClicked = false;
                 break;
             case R.id.button_multiplication:
                 backHistory();
-
+                CancelPast();
                 if (addOperand("x")) equalClicked = false;
                 break;
             case R.id.button_division:
@@ -230,22 +230,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_percent:
                 backHistory();
-
+                CancelPast();
                 if (addOperand("%")) equalClicked = false;
                 break;
             case R.id.button_dot:
                 backHistory();
-
+                CancelPast();
                 if (addDot()) equalClicked = false;
                 break;
             case R.id.button_parentheses:
                 backHistory();
-
+                CancelPast();
                 if (addParenthesis()) equalClicked = false;
                 break;
             case R.id.button_clear:
                 backHistory();
-
+                CancelPast();
                 textViewInputNumbers.setText("");
                 openParenthesis = 0;
                 dotUsed = false;
@@ -267,8 +267,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(buttonHistory.getText().equals("Back") && back){
                     backHistory();
                 }
-
                 break;
+            case R.id.button_CancelPreviousCalculations:
+                 boolean clear = true;
+                if(!buttonClear.getText().equals("Clear")){
+                    buttonHistory.setText("clear");
+                    tempTXT = textViewInputNumbers.getText().toString();
+                    textViewInputNumbers.setText("");
+                    String clearString = "";
+                    for(String s : history){
+                        clearString += s + "\n";
+                    }
+                    textViewInputNumbers.setText(clearString);
+                    clear = false;
+                }
+                if(buttonClear.getText().equals("Clear") && clear){
+                    backHistory();
+                }
             case R.id.button_equal:
                 backHistory();
                 if (textViewInputNumbers.getText().toString() != null && !textViewInputNumbers.getText().toString().equals(""))
@@ -282,6 +297,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(buttonHistory.getText().equals("Back")){
             textViewInputNumbers.setText(tempTXT);
             buttonHistory.setText("History");
+        }
+    }
+    private void CancelPast(){
+        if(buttonClear.getText().equals("Clear")){
+            textViewInputNumbers.setText(tempTXT);
+            buttonClear.setText("Clear");
         }
     }
 
