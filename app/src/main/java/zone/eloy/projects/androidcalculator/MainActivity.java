@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 {
     private int openParenthesis = 0;
     private ArrayList<String> history;
+    private ArrayList<String> cancel;
     private String tempTXT = "";
     private boolean dotUsed = false;
 
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonNumber9;
 
     Button buttonHistory;
+    Button buttonCancel;
     Button buttonClear;
     Button buttonParentheses;
     Button buttonPercent;
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         scriptEngine = new ScriptEngineManager().getEngineByName("rhino");
-
+        cancel = new ArrayList<String>();
         history = new ArrayList<String>();
         initializeViewVariables();
         setOnClickListeners();
@@ -87,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber9 = (Button) findViewById(R.id.button_nine);
 
         buttonHistory = (Button) findViewById(R.id.button_history);
+        buttonCancel = (Button) findViewById(R.id.button_clear);
         buttonClear = (Button) findViewById(R.id.button_clear);
         buttonParentheses = (Button) findViewById(R.id.button_parentheses);
         buttonPercent = (Button) findViewById(R.id.button_percent);
@@ -113,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber9.setOnClickListener(this);
 
         buttonHistory.setOnClickListener(this);
+        buttonCancel.setOnClickListener(this);
         buttonClear.setOnClickListener(this);
         buttonParentheses.setOnClickListener(this);
         buttonPercent.setOnClickListener(this);
@@ -138,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber9.setOnTouchListener(this);
 
         buttonHistory.setOnTouchListener(this);
+        buttonCancel.setOnTouchListener(this);
         buttonClear.setOnTouchListener(this);
         buttonParentheses.setOnTouchListener(this);
         buttonPercent.setOnTouchListener(this);
@@ -155,74 +160,92 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             case R.id.button_zero:
                 backHistory();
+
                 if (addNumber("0")) equalClicked = false;
                 break;
             case R.id.button_one:
                 backHistory();
+
                 if (addNumber("1")) equalClicked = false;
                 break;
             case R.id.button_two:
                 backHistory();
+
                 if (addNumber("2")) equalClicked = false;
                 break;
             case R.id.button_three:
                 backHistory();
+
                 if (addNumber("3")) equalClicked = false;
                 break;
             case R.id.button_four:
                 backHistory();
+
                 if (addNumber("4")) equalClicked = false;
                 break;
             case R.id.button_five:
                 backHistory();
+
                 if (addNumber("5")) equalClicked = false;
                 break;
             case R.id.button_six:
                 backHistory();
+
                 if (addNumber("6")) equalClicked = false;
                 break;
             case R.id.button_seven:
                 backHistory();
+
                 if (addNumber("7")) equalClicked = false;
                 break;
             case R.id.button_eight:
                 backHistory();
+
                 if (addNumber("8")) equalClicked = false;
                 break;
             case R.id.button_nine:
                 backHistory();
+
                 if (addNumber("9")) equalClicked = false;
                 break;
             case R.id.button_addition:
                 backHistory();
+
                 if (addOperand("+")) equalClicked = false;
                 break;
             case R.id.button_subtraction:
                 backHistory();
+
                 if (addOperand("-")) equalClicked = false;
                 break;
             case R.id.button_multiplication:
                 backHistory();
+
                 if (addOperand("x")) equalClicked = false;
                 break;
             case R.id.button_division:
                 backHistory();
+
                 if (addOperand("\u00F7")) equalClicked = false;
                 break;
             case R.id.button_percent:
                 backHistory();
+
                 if (addOperand("%")) equalClicked = false;
                 break;
             case R.id.button_dot:
                 backHistory();
+
                 if (addDot()) equalClicked = false;
                 break;
             case R.id.button_parentheses:
                 backHistory();
+
                 if (addParenthesis()) equalClicked = false;
                 break;
             case R.id.button_clear:
                 backHistory();
+
                 textViewInputNumbers.setText("");
                 openParenthesis = 0;
                 dotUsed = false;
