@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonAddition;
     Button buttonEqual;
     Button buttonDot;
+    Button buttonExponent;
 
     TextView textViewInputNumbers;
 
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonAddition = (Button) findViewById(R.id.button_addition);
         buttonEqual = (Button) findViewById(R.id.button_equal);
         buttonDot = (Button) findViewById(R.id.button_dot);
+        buttonExponent = (Button) findViewById(R.id.button_exponent);
         textViewInputNumbers = (TextView) findViewById(R.id.textView_input_numbers);
     }
 
@@ -122,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonAddition.setOnClickListener(this);
         buttonEqual.setOnClickListener(this);
         buttonDot.setOnClickListener(this);
+        buttonExponent.setOnClickListener(this);
     }
 
     private void setOnTouchListener()
@@ -146,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonSubtraction.setOnTouchListener(this);
         buttonAddition.setOnTouchListener(this);
         buttonDot.setOnTouchListener(this);
+        buttonExponent.setOnTouchListener(this);
     }
 
     @Override
@@ -204,6 +208,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_multiplication:
                 backHistory();
                 if (addOperand("x")) equalClicked = false;
+                break;
+            case R.id.button_exponent:
+                backHistory();
+                if (addExponent()) equalClicked = false;
                 break;
             case R.id.button_division:
                 backHistory();
@@ -281,6 +289,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         return false;
+    }
+
+    private boolean addExponent()
+    {
+        textViewInputNumbers.setText("("+textViewInputNumbers.getText() + ")x(" + textViewInputNumbers.getText() +")");
+        calculate(textViewInputNumbers.getText().toString());
+
+        return true;
     }
 
     private boolean addDot()
@@ -539,7 +555,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
         }
 
-        if ((lastCharacter.equals("+") || lastCharacter.equals("-") || lastCharacter.equals("x") || lastCharacter.equals("\u00F7") || lastCharacter.equals("%")))
+        if ((lastCharacter.equals("+") || lastCharacter.equals("-") || lastCharacter.equals("x") || lastCharacter.equals("\u00F7") || lastCharacter.equals("%") || lastCharacter.equals("\\u00B2")))
             return IS_OPERAND;
 
         if (lastCharacter.equals("("))
