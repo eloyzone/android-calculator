@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ArrayList<String> history;//Added by MFonggrasin
     private String tempTXT = "";//Added by MFonggrasin
 
-    private ArrayList<String> cancel;
+    private ArrayList<String> cancel;//Added by Uha Sree Budda
 
     private boolean dotUsed = false;
 
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonNumber9;
 
     Button buttonHistory;//Added by MFonggrasin
-    Button buttonCancel;
+    Button buttonCancel;//Added by Uha Sree Budda
 
     Button buttonClear;
     Button buttonParentheses;
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         scriptEngine = new ScriptEngineManager().getEngineByName("rhino");
 
-        cancel = new ArrayList<String>();
+        cancel = new ArrayList<String>();//Added by Uha Sree Budda
         history = new ArrayList<String>();//Added by MFonggrasin
 
         initializeViewVariables();
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber9 = (Button) findViewById(R.id.button_nine);
 
         buttonHistory = (Button) findViewById(R.id.button_history); //Added by MFonggrasin
-        buttonCancel = (Button) findViewById(R.id.button_CancelPreviousCalculations);
+        buttonCancel = (Button) findViewById(R.id.button_CancelPreviousCalculations);//Added by Uha Sree Budda
 
         buttonClear = (Button) findViewById(R.id.button_clear);
         buttonParentheses = (Button) findViewById(R.id.button_parentheses);
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber9.setOnClickListener(this);
 
         buttonHistory.setOnClickListener(this);//Added by MFonggrasin
-        buttonCancel.setOnClickListener(this);
+        buttonCancel.setOnClickListener(this);//Added by Uha Sree Budda
 
         buttonClear.setOnClickListener(this);
         buttonParentheses.setOnClickListener(this);
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber9.setOnTouchListener(this);
 
         buttonHistory.setOnTouchListener(this);//Added by MFonggrasin
-        buttonCancel.setOnTouchListener(this);
+        buttonCancel.setOnTouchListener(this);//Added by Uha Sree Budda
 
         buttonClear.setOnTouchListener(this);
         buttonParentheses.setOnTouchListener(this);
@@ -252,14 +252,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (addOperand("\u00F7")) equalClicked = false;
                 break;
 
-            case R.id.button_CancelPreviousCalculations:
+            case R.id.button_CancelPreviousCalculations: //Added by Uha Sree Budda
                 boolean clear = true;
                 if(!buttonClear.getText().equals("Clear")){
                     buttonClear.setText("clear");
                     tempTXT = textViewInputNumbers.getText().toString();
                     textViewInputNumbers.setText("");
                     String clearString = "";
-                    for(String s : history){
+                    for(String s : cancel){
                         clearString += s + "\n";
                     }
                     textViewInputNumbers.setText(clearString);
@@ -304,7 +304,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
-
+    //Added by Uha Sree Budda
     private void CancelPast(){
         if(buttonClear.getText().equals("Clear")){
             textViewInputNumbers.setText(tempTXT);
