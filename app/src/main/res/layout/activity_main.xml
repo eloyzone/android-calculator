@@ -10,23 +10,81 @@
 
 
     <LinearLayout
-        android:layout_marginTop="0.1dp"
-        android:layout_marginLeft="0.9dp"
-        android:layout_marginRight="0.1dp"
-        android:background="@android:color/black"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_marginLeft="0.9dp"
+        android:layout_marginTop="0.1dp"
+        android:layout_marginRight="0.1dp"
+        android:layout_weight="3"
+        android:background="@android:color/black">
 
-        <TextView
-            android:id="@+id/textView_input_numbers"
-            android:layout_marginTop="25dp"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:gravity="end"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView_input_numbers"
+                    android:layout_width="match_parent"
+                    android:layout_height="217dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="end"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="40sp" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_history"
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0.9dp"
+            android:layout_marginTop="0.1dp"
+            android:layout_marginRight="0.1dp"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:text="History"
             android:textColor="@android:color/holo_red_light"
-            android:textSize="40sp" />
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button_CancelPreviousCalculations"
+            android:layout_width="14dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0.9dp"
+            android:layout_marginTop="0.1dp"
+            android:layout_marginRight="0.1dp"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:text="Cancel"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button_exponent"
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0.9dp"
+            android:layout_marginTop="0.1dp"
+            android:layout_marginRight="0.1dp"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:text="x\u00b2"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="30sp" />
 
     </LinearLayout>
 
