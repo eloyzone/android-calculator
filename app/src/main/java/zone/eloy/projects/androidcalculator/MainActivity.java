@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonNumber7;
     Button buttonNumber8;
     Button buttonNumber9;
+    Button buttonNumber10;
 
     Button buttonClear;
     Button buttonParentheses;
