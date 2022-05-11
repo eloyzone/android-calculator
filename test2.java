@@ -1,7 +1,6 @@
 class Test2{
    int number ;
    String name ;
-   int id;
    public void set_Name(String s){
        name=s;
         
@@ -15,10 +14,9 @@ class Test2{
     public int  get_Number(){
        return number;
    }
-   public Test2 (int a,String b,int id){
+   public Test2 (int a,String b){
        number=a;
        name=b;
-       this.id = id;
    }
 
 }
