@@ -2,6 +2,7 @@
 class Test{
    int number ;
    String name ;
+   String city;
    public void set_Name(String s){
        name=s;
         
