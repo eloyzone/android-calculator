@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Simple Calculator</string>
+    <string name="x2">x<sup>2</sup></string>
+    <string name="root">√¯</string>
 </resources>
