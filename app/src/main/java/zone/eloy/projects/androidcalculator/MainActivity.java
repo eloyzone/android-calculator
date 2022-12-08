@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     ScriptEngine scriptEngine;
 //    This is sample statement to check github connectivity
+//    This is again a sample to check wrong commit name
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
