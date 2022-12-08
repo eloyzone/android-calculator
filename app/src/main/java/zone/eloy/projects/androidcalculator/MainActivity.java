@@ -247,6 +247,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String str1 = d1+"";
                 textViewInputNumbers.setText(str1);
                 break;
+//            Code for backspace button
             case R.id.button_backspace:
                 if(textViewInputNumbers.getText().toString() == null)
                     Toast.makeText(getApplicationContext(), "Nothing to delete!", Toast.LENGTH_LONG).show();
