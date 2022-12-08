@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Simple Calculator</string>
+    <string name="sqr_root">√¯¯</string>
+    <string name="square">x<sup>2</sup></string>
+    <string name="backspace">\u232b</string>
 </resources>
