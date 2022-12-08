@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.math.BigDecimal;
+import java.lang.Math;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -43,6 +44,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonNumber8;
     Button buttonNumber9;
 
+    Button buttonRoot;
+    Button buttonSquare;
+    Button buttonMod;
+    Button buttonBackspace;
     Button buttonClear;
     Button buttonParentheses;
     Button buttonPercent;
@@ -56,8 +61,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView textViewInputNumbers;
 
     ScriptEngine scriptEngine;
-//    This is sample statement to check github connectivity
-//    This is again a sample to check wrong commit name
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -84,6 +87,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber8 = (Button) findViewById(R.id.button_eight);
         buttonNumber9 = (Button) findViewById(R.id.button_nine);
 
+        buttonRoot = (Button) findViewById(R.id.button_root);
+        buttonSquare = (Button) findViewById(R.id.button_square);
+        buttonMod = (Button) findViewById(R.id.button_mod);
+        buttonBackspace = (Button) findViewById(R.id.button_backspace);
+
         buttonClear = (Button) findViewById(R.id.button_clear);
         buttonParentheses = (Button) findViewById(R.id.button_parentheses);
         buttonPercent = (Button) findViewById(R.id.button_percent);
@@ -109,6 +117,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber8.setOnClickListener(this);
         buttonNumber9.setOnClickListener(this);
 
+        buttonRoot.setOnClickListener(this);
+        buttonSquare.setOnClickListener(this);
+        buttonMod.setOnClickListener(this);
+        buttonBackspace.setOnClickListener(this);
+
         buttonClear.setOnClickListener(this);
         buttonParentheses.setOnClickListener(this);
         buttonPercent.setOnClickListener(this);
@@ -132,6 +145,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber7.setOnTouchListener(this);
         buttonNumber8.setOnTouchListener(this);
         buttonNumber9.setOnTouchListener(this);
+
+        buttonRoot.setOnTouchListener(this);
+        buttonSquare.setOnTouchListener(this);
+        buttonMod.setOnTouchListener(this);
+        buttonBackspace.setOnTouchListener(this);
 
         buttonClear.setOnTouchListener(this);
         buttonParentheses.setOnTouchListener(this);
@@ -209,6 +227,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (textViewInputNumbers.getText().toString() != null && !textViewInputNumbers.getText().toString().equals(""))
                     calculate(textViewInputNumbers.getText().toString());
                 break;
+            case R.id.button_root:
+                if (textViewInputNumbers.getText().toString() != null && !textViewInputNumbers.getText().toString().equals(""))
+                    calculate(textViewInputNumbers.getText().toString());
+                String tmp = textViewInputNumbers.getText().toString();
+                Double d = Double.parseDouble(tmp);
+                d = Math.sqrt(d);
+                String str = d+"";
+                textViewInputNumbers.setText(str);
+                break;
+            case R.id.button_square:
+                if (textViewInputNumbers.getText().toString() != null && !textViewInputNumbers.getText().toString().equals(""))
+                    calculate(textViewInputNumbers.getText().toString());
+                String tmp1 = textViewInputNumbers.getText().toString();
+                Double d1 = Double.parseDouble(tmp1);
+                d1 = d1*d1;
+                String str1 = d1+"";
+                textViewInputNumbers.setText(str1);
+                break;
+            case R.id.button_backspace:
+                if(textViewInputNumbers.getText().toString() == null)
+                    Toast.makeText(getApplicationContext(), "Nothing to delete!", Toast.LENGTH_LONG).show();
+                else{
+                    String s  = tmp1 = textViewInputNumbers.getText().toString();
+                    s = (s == null || s.length() == 0) ? null : (s.substring(0, s.length() - 1));
+                    textViewInputNumbers.setText(s);
+                }
+                break;
+
         }
 
     }
