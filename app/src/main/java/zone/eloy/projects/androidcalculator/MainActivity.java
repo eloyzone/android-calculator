@@ -237,6 +237,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String str = d+"";
                 textViewInputNumbers.setText(str);
                 break;
+//            Code for square button
             case R.id.button_square:
                 if (textViewInputNumbers.getText().toString() != null && !textViewInputNumbers.getText().toString().equals(""))
                     calculate(textViewInputNumbers.getText().toString());
