@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_marginTop="0.5dp"
-    tools:context="projects.eloy.zone.androidtestproject.MainActivity">
+    tools:context=".MainActivity">
 
 
     <LinearLayout
