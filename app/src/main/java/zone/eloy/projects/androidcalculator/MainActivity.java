@@ -18,7 +18,6 @@ import javax.script.ScriptEngineManager;
 //this is sample commit to check git connectivity
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener
 {
-
     private int openParenthesis = 0;
     private boolean dotUsed = false;
 
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonNumber7;
     Button buttonNumber8;
     Button buttonNumber9;
-
+    Button buttonClear;
     Button buttonRoot;
     // To add more
     Button buttonParentheses;
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber7 = (Button) findViewById(R.id.button_seven);
         buttonNumber8 = (Button) findViewById(R.id.button_eight);
         buttonNumber9 = (Button) findViewById(R.id.button_nine);
-
+        buttonClear = (Button) findViewById(R.id.button_clear);
         buttonRoot = (Button) findViewById(R.id.button_root);
         // To add more
         buttonParentheses = (Button) findViewById(R.id.button_parentheses);
@@ -109,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber7.setOnClickListener(this);
         buttonNumber8.setOnClickListener(this);
         buttonNumber9.setOnClickListener(this);
-
+        buttonClear.setOnClickListener(this);
 
         buttonRoot.setOnClickListener(this);
         //To add more
@@ -136,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber7.setOnTouchListener(this);
         buttonNumber8.setOnTouchListener(this);
         buttonNumber9.setOnTouchListener(this);
-
+        buttonClear.setOnTouchListener(this);
         buttonRoot.setOnTouchListener(this);
         //To add more
         buttonParentheses.setOnTouchListener(this);
