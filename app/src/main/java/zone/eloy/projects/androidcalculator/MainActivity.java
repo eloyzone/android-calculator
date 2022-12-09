@@ -12,18 +12,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.math.BigDecimal;
-
+import java.lang.Math;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 //this is sample commit to check git connectivity
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener
 {
-    private int openParenthesis = 0;
 
+    private int openParenthesis = 0;
     private boolean dotUsed = false;
 
     private boolean equalClicked = false;
     private String lastExpression = "";
+
 
     private final static int EXCEPTION = -1;
     private final static int IS_NUMBER = 0;
@@ -43,7 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonNumber8;
     Button buttonNumber9;
 
-    Button buttonClear;
+    Button buttonRoot;
+    // To add more
     Button buttonParentheses;
     Button buttonPercent;
     Button buttonDivision;
@@ -82,7 +84,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber8 = (Button) findViewById(R.id.button_eight);
         buttonNumber9 = (Button) findViewById(R.id.button_nine);
 
-        buttonClear = (Button) findViewById(R.id.button_clear);
+        buttonRoot = (Button) findViewById(R.id.button_root);
+        // To add more
         buttonParentheses = (Button) findViewById(R.id.button_parentheses);
         buttonPercent = (Button) findViewById(R.id.button_percent);
         buttonDivision = (Button) findViewById(R.id.button_division);
@@ -107,7 +110,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber8.setOnClickListener(this);
         buttonNumber9.setOnClickListener(this);
 
-        buttonClear.setOnClickListener(this);
+
+        buttonRoot.setOnClickListener(this);
+        //To add more
         buttonParentheses.setOnClickListener(this);
         buttonPercent.setOnClickListener(this);
         buttonDivision.setOnClickListener(this);
@@ -120,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setOnTouchListener()
     {
+
         buttonNumber0.setOnTouchListener(this);
         buttonNumber1.setOnTouchListener(this);
         buttonNumber2.setOnTouchListener(this);
@@ -131,7 +137,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber8.setOnTouchListener(this);
         buttonNumber9.setOnTouchListener(this);
 
-        buttonClear.setOnTouchListener(this);
+        buttonRoot.setOnTouchListener(this);
+        //To add more
         buttonParentheses.setOnTouchListener(this);
         buttonPercent.setOnTouchListener(this);
         buttonDivision.setOnTouchListener(this);
@@ -206,7 +213,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_equal:
                 if (textViewInputNumbers.getText().toString() != null && !textViewInputNumbers.getText().toString().equals(""))
                     calculate(textViewInputNumbers.getText().toString());
+
                 break;
+            case R.id.button_root:
+                if (textViewInputNumbers.getText().toString() != null && !textViewInputNumbers.getText().toString().equals(""))
+                    calculate(textViewInputNumbers.getText().toString());
+                String tmp = textViewInputNumbers.getText().toString();
+                Double d = Double.parseDouble(tmp);
+                d = Math.sqrt(d);
+                String str = d+"";
+                textViewInputNumbers.setText(str);
+                break;
+            //To add more
         }
 
     }

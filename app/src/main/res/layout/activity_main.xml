@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_marginTop="0.5dp"
-    tools:context="projects.eloy.zone.androidtestproject.MainActivity">
+    tools:context=".MainActivity">
 
 
     <LinearLayout
@@ -29,6 +29,30 @@
             android:textSize="40sp" />
 
     </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_root"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0.1dp"
+            android:layout_marginLeft="0.9dp"
+            android:layout_marginRight="0.1dp"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:text="@string/sqr_root"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="30sp" />
+
+
+    </LinearLayout>
+
 
 
     <LinearLayout
