@@ -73,6 +73,19 @@
             android:text="ln"
             android:textColor="@android:color/holo_red_light"
             android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button_backspace"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0.1dp"
+            android:layout_marginRight="0.1dp"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:text="@string/backspace"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="40sp" />
+
     </LinearLayout>
 
 

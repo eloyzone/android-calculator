@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonRoot;
     Button buttonSquare;
     Button buttonLog;
+    Button buttonBackspace;
     // To add more
     Button buttonParentheses;
     Button buttonPercent;
@@ -88,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonRoot = (Button) findViewById(R.id.button_root);
         buttonSquare = (Button) findViewById(R.id.button_square);
         buttonLog = (Button) findViewById(R.id.button_log);
+        buttonBackspace = (Button) findViewById(R.id.button_backspace);
         // To add more
         buttonParentheses = (Button) findViewById(R.id.button_parentheses);
         buttonPercent = (Button) findViewById(R.id.button_percent);
@@ -117,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonRoot.setOnClickListener(this);
         buttonSquare.setOnClickListener(this);
         buttonLog.setOnClickListener(this);
+        buttonBackspace.setOnClickListener(this);
         //To add more
         buttonParentheses.setOnClickListener(this);
         buttonPercent.setOnClickListener(this);
@@ -145,6 +148,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonRoot.setOnTouchListener(this);
         buttonSquare.setOnTouchListener(this);
         buttonLog.setOnTouchListener(this);
+        buttonBackspace.setOnTouchListener(this);
         //To add more
         buttonParentheses.setOnTouchListener(this);
         buttonPercent.setOnTouchListener(this);
@@ -248,6 +252,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 d2 = Math.log(d2);
                 String str2 = d2+"";
                 textViewInputNumbers.setText(str2);
+                break;
+            case R.id.button_backspace:
+                if(textViewInputNumbers.getText().toString() == null)
+                    Toast.makeText(getApplicationContext(), "Nothing to delete!", Toast.LENGTH_LONG).show();
+                else{
+                    String s  = tmp1 = textViewInputNumbers.getText().toString();
+                    s = (s == null || s.length() == 0) ? null : (s.substring(0, s.length() - 1));
+                    textViewInputNumbers.setText(s);
+                }
                 break;
             //To add more
         }
