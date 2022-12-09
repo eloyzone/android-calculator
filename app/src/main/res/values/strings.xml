@@ -5,4 +5,5 @@
     <string name="log">ln</string>
     <string name="backspace">\u232b</string>
     <string name="cube">x<sup>3</sup></string>
+    <string name="log10">log</string>
 </resources>

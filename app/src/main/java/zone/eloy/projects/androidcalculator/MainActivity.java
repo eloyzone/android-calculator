@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonLog;
     Button buttonBackspace;
     Button buttonCube;
+    Button buttonLog10;
     // To add more
     Button buttonParentheses;
     Button buttonPercent;
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonLog = (Button) findViewById(R.id.button_log);
         buttonBackspace = (Button) findViewById(R.id.button_backspace);
         buttonCube = (Button) findViewById(R.id.button_cube);
+        buttonLog10 = (Button) findViewById(R.id.button_log10);
         // To add more
         buttonParentheses = (Button) findViewById(R.id.button_parentheses);
         buttonPercent = (Button) findViewById(R.id.button_percent);
@@ -123,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonLog.setOnClickListener(this);
         buttonBackspace.setOnClickListener(this);
         buttonCube.setOnClickListener(this);
+        buttonLog10.setOnClickListener(this);
         //To add more
         buttonParentheses.setOnClickListener(this);
         buttonPercent.setOnClickListener(this);
@@ -153,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonLog.setOnTouchListener(this);
         buttonBackspace.setOnTouchListener(this);
         buttonCube.setOnTouchListener(this);
+        buttonLog10.setOnTouchListener(this);
         //To add more
         buttonParentheses.setOnTouchListener(this);
         buttonPercent.setOnTouchListener(this);
@@ -274,6 +278,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 d3 = d3*d3*d3;
                 String str3 = d3+"";
                 textViewInputNumbers.setText(str3);
+                break;
+            case R.id.button_log10:
+                if (textViewInputNumbers.getText().toString() != null && !textViewInputNumbers.getText().toString().equals(""))
+                    calculate(textViewInputNumbers.getText().toString());
+                String tmp4 = textViewInputNumbers.getText().toString();
+                Double d4 = Double.parseDouble(tmp4);
+                d4 = Math.log(d4)/Math.log(10);
+                String str4 = d4+"";
+                textViewInputNumbers.setText(str4);
                 break;
             //To add more
         }
