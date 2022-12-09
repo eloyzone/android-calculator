@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
-
+//this is sample commit to check git connectivity
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener
 {
     private int openParenthesis = 0;
