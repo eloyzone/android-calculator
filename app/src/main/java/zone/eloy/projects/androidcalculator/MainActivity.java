@@ -12,18 +12,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.math.BigDecimal;
-
+import java.lang.Math;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
-
+//this is sample commit to check git connectivity
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener
 {
     private int openParenthesis = 0;
-
     private boolean dotUsed = false;
 
     private boolean equalClicked = false;
     private String lastExpression = "";
+
 
     private final static int EXCEPTION = -1;
     private final static int IS_NUMBER = 0;
@@ -42,8 +42,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonNumber7;
     Button buttonNumber8;
     Button buttonNumber9;
-
     Button buttonClear;
+    Button buttonRoot;
+    Button buttonSquare;
+    Button buttonLog;
+    Button buttonBackspace;
+    Button buttonCube;
+    Button buttonLog10;
+    // To add more
     Button buttonParentheses;
     Button buttonPercent;
     Button buttonDivision;
@@ -81,8 +87,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber7 = (Button) findViewById(R.id.button_seven);
         buttonNumber8 = (Button) findViewById(R.id.button_eight);
         buttonNumber9 = (Button) findViewById(R.id.button_nine);
-
         buttonClear = (Button) findViewById(R.id.button_clear);
+        buttonRoot = (Button) findViewById(R.id.button_root);
+        buttonSquare = (Button) findViewById(R.id.button_square);
+        buttonLog = (Button) findViewById(R.id.button_log);
+        buttonBackspace = (Button) findViewById(R.id.button_backspace);
+        buttonCube = (Button) findViewById(R.id.button_cube);
+        buttonLog10 = (Button) findViewById(R.id.button_log10);
+        // To add more
         buttonParentheses = (Button) findViewById(R.id.button_parentheses);
         buttonPercent = (Button) findViewById(R.id.button_percent);
         buttonDivision = (Button) findViewById(R.id.button_division);
@@ -106,8 +118,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber7.setOnClickListener(this);
         buttonNumber8.setOnClickListener(this);
         buttonNumber9.setOnClickListener(this);
-
         buttonClear.setOnClickListener(this);
+
+        buttonRoot.setOnClickListener(this);
+        buttonSquare.setOnClickListener(this);
+        buttonLog.setOnClickListener(this);
+        buttonBackspace.setOnClickListener(this);
+        buttonCube.setOnClickListener(this);
+        buttonLog10.setOnClickListener(this);
+        //To add more
         buttonParentheses.setOnClickListener(this);
         buttonPercent.setOnClickListener(this);
         buttonDivision.setOnClickListener(this);
@@ -120,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setOnTouchListener()
     {
+
         buttonNumber0.setOnTouchListener(this);
         buttonNumber1.setOnTouchListener(this);
         buttonNumber2.setOnTouchListener(this);
@@ -130,8 +150,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNumber7.setOnTouchListener(this);
         buttonNumber8.setOnTouchListener(this);
         buttonNumber9.setOnTouchListener(this);
-
         buttonClear.setOnTouchListener(this);
+        buttonRoot.setOnTouchListener(this);
+        buttonSquare.setOnTouchListener(this);
+        buttonLog.setOnTouchListener(this);
+        buttonBackspace.setOnTouchListener(this);
+        buttonCube.setOnTouchListener(this);
+        buttonLog10.setOnTouchListener(this);
+        //To add more
         buttonParentheses.setOnTouchListener(this);
         buttonPercent.setOnTouchListener(this);
         buttonDivision.setOnTouchListener(this);
@@ -206,7 +232,63 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_equal:
                 if (textViewInputNumbers.getText().toString() != null && !textViewInputNumbers.getText().toString().equals(""))
                     calculate(textViewInputNumbers.getText().toString());
+
                 break;
+            case R.id.button_root:
+                if (textViewInputNumbers.getText().toString() != null && !textViewInputNumbers.getText().toString().equals(""))
+                    calculate(textViewInputNumbers.getText().toString());
+                String tmp = textViewInputNumbers.getText().toString();
+                Double d = Double.parseDouble(tmp);
+                d = Math.sqrt(d);
+                String str = d+"";
+                textViewInputNumbers.setText(str);
+                break;
+            case R.id.button_square:
+                if (textViewInputNumbers.getText().toString() != null && !textViewInputNumbers.getText().toString().equals(""))
+                    calculate(textViewInputNumbers.getText().toString());
+                String tmp1 = textViewInputNumbers.getText().toString();
+                Double d1 = Double.parseDouble(tmp1);
+                d1 = d1*d1;
+                String str1 = d1+"";
+                textViewInputNumbers.setText(str1);
+                break;
+            case R.id.button_log:
+                if (textViewInputNumbers.getText().toString() != null && !textViewInputNumbers.getText().toString().equals(""))
+                    calculate(textViewInputNumbers.getText().toString());
+                String tmp2 = textViewInputNumbers.getText().toString();
+                Double d2 = Double.parseDouble(tmp2);
+                d2 = Math.log(d2);
+                String str2 = d2+"";
+                textViewInputNumbers.setText(str2);
+                break;
+            case R.id.button_backspace:
+                if(textViewInputNumbers.getText().toString() == null)
+                    Toast.makeText(getApplicationContext(), "Nothing to delete!", Toast.LENGTH_LONG).show();
+                else{
+                    String s  = tmp1 = textViewInputNumbers.getText().toString();
+                    s = (s == null || s.length() == 0) ? null : (s.substring(0, s.length() - 1));
+                    textViewInputNumbers.setText(s);
+                }
+                break;
+            case R.id.button_cube:
+                if (textViewInputNumbers.getText().toString() != null && !textViewInputNumbers.getText().toString().equals(""))
+                    calculate(textViewInputNumbers.getText().toString());
+                String tmp3 = textViewInputNumbers.getText().toString();
+                Double d3 = Double.parseDouble(tmp3);
+                d3 = d3*d3*d3;
+                String str3 = d3+"";
+                textViewInputNumbers.setText(str3);
+                break;
+            case R.id.button_log10:
+                if (textViewInputNumbers.getText().toString() != null && !textViewInputNumbers.getText().toString().equals(""))
+                    calculate(textViewInputNumbers.getText().toString());
+                String tmp4 = textViewInputNumbers.getText().toString();
+                Double d4 = Double.parseDouble(tmp4);
+                d4 = Math.log(d4)/Math.log(10);
+                String str4 = d4+"";
+                textViewInputNumbers.setText(str4);
+                break;
+            //To add more
         }
 
     }
